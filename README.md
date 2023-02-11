@@ -33,7 +33,7 @@ The frequently asked questions page and the [Wiki](https://github.com/oyvindln/v
 
 This repository also contains an **experimental** CVBS decoder, `cvbs-decode`, which shares code with ld-decode and vhs-decode. Capable of decoding basic raw digitized NTSC and PAL composite video, including colour if the source is somewhat stable. 
 
-RAW CVBS has been captured using CX Cards & CXADC, however, this is somewhat buggy as the cx chip can decide to resample or do other things if it detects a valid video signal normally this happens when an unknown internal gain threshhold is reached.
+RAW CVBS has been captured using CX Cards & CXADC, however, this is somewhat buggy as the cx chip can decide to resample or do other things if it detects a valid video signal normally this happens when an unknown internal gain threshold is reached.
 
 Test samples & signals can be generated using [HackTV](https://github.com/fsphil/hacktv)
 
@@ -55,7 +55,7 @@ Preferably adjusted per tape and in excellent mechanical and head condition, pro
 
 **Note** SVHS tapes can be RF captured on standard VHS HiFi decks.
 
-**Note** SVHS NTSC Decks - Currently inflated, but you can import PAL decks with NTSC support for 1/3rd the price though this only applys if conventional refrance SVHS captures are required.
+**Note** SVHS NTSC Decks - Currently inflated, but you can import PAL decks with NTSC support for 1/3rd the price though this only apply if conventional refrance SVHS captures are required.
 
 **Always clean your tape track/drum/heads** before and afterwards with with 99.9% Isopropanol and lint free cloths/pads/paper this ensures less dropouts from dirty heads or tracks including the track of the head drum.
 
@@ -88,11 +88,11 @@ Capture & Config uses simple command-line arguments and parameters [CXADC](https
 
 The budget approach is using a video capture card based on a Conexant CX23880/1/2/3 PCI chipset. With a modified Linux driver, these cards can be forced to output RAW data that can be captured to file, instead of decoding video normally as they otherwise would.
 
-While you can use any generic card with the correct chips, today we recommend the ‘’New’’ Chinese variants that can be found on AliExpress that have integrated Asmedia or ITE 1x PCIE bridge chips allowing modern systems to use them, and consisent proformance.
+While you can use any generic card with the correct chips, today we recommend the ‘’New’’ Chinese variants that can be found on AliExpress that have integrated Asmedia or ITE 1x PCIE bridge chips allowing modern systems to use them, and consistent prerformance.
 
 [Ware to Buy? & More Info](https://github.com/oyvindln/vhs-decode/wiki/CX-Cards)
 
-Sadly however at stock without any modifications CX Cards proform slightly worse then a DomesdayDuplicator with about a 3db signal to noise difference, and its internal digital gain can affect captures drastically.
+Sadly however at stock without any modifications CX Cards perform slightly worse then a DomesdayDuplicator with about a 3db signal to noise difference, and its internal digital gain can affect captures drastically.
 
 Currently the CX23883-39 based white variant cards have been consistently lower noise, these have also been easily upgraded to 40msps 8-bit with a drop-in crystal upgrade for use with formats like LaserDisc but at stock with external amplification they are quite optimal for VHS & HiFi, but higher bandwidth formats like SVHS & ED Beta can benifit from crystal upgrades.
 
@@ -236,7 +236,7 @@ You dont actaully type `<` and `>` on your input & output files.
 * Check Gain
 * Capture
 
-To see if you have a connection, use the live preview mode and then hook up your RF cable, normally you will see a white flash as a signal if not change your vmux or input within a 0-2 range with the below command.
+To see if you have a connection, use the live preview mode and then hook up your RF cable, normally you will see a white flash as a signal, if not change your vmux or input within a 0-2 range with the below command.
 
     sudo echo 0 >/sys/module/cxadc/parameters/vmux
 
@@ -335,7 +335,7 @@ Decompress FLAC compressed captures:
 
 VHS-Decode produces two timebase corrected 16-bit `GREY16` headerless files separated into chroma/luma composite video signals in the `.tbc` format alongside `.json` and `.log` files, usable with the LD-Decode family of tools ld-analyse, ld-process-vbi, ld-process-vits and ld-dropout-correct.
 
-The gen chroma scrips will use decoded .tbc files and generate standard video files by default a lossless, interlaced top field first and high-bitrate (roughly 70-100 Mb/s) FFV1 codec video which, which although ideal for archival and further processing.
+The gen chroma scrips will use decoded .tbc files and generate standard video files by default a lossless, interlaced top field first and high-bitrate (roughly 70-100 Mb/s) FFV1 codec video which, which although ideal for archival and further processing do not work in big NLEs
 
 *gen_chroma_vid.sh automatically detects PAL/NTSC based on the .JSON, although legacy scripts still exsist*
 
